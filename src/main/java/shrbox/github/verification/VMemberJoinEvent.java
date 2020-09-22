@@ -8,7 +8,7 @@ import net.mamoe.mirai.message.data.MessageUtils;
 import java.util.Random;
 import java.util.function.Consumer;
 
-public class MemberJoinEvent implements Consumer<net.mamoe.mirai.event.events.MemberJoinEvent> {
+public class VMemberJoinEvent implements Consumer<net.mamoe.mirai.event.events.MemberJoinEvent> {
     @Override
     public void accept(net.mamoe.mirai.event.events.MemberJoinEvent event) {
         if(event.getGroup().getBotPermission().getLevel()==0|| !Main.config.getLongList("enable_group").contains(event.getGroup().getId())) {

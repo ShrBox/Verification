@@ -80,8 +80,8 @@ public class Main extends PluginBase {
         loadConfigFiles();
 
         getLogger().info("Plugin enabled!");
-        this.getEventListener().subscribeAlways(net.mamoe.mirai.event.events.MemberJoinEvent.class,new MemberJoinEvent());
+        this.getEventListener().subscribeAlways(net.mamoe.mirai.event.events.MemberJoinEvent.class,new VMemberJoinEvent());
         this.getEventListener().subscribeAlways(GroupMessageEvent.class,new MessageListener());
-        this.getEventListener().subscribeAlways(net.mamoe.mirai.event.events.MemberJoinEvent.class,new MemberJoinEvent());
+        this.getEventListener().subscribeAlways(net.mamoe.mirai.event.events.MemberJoinEvent.class,new VMemberJoinEvent());
     }
 }          
