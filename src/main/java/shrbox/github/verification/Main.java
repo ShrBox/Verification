@@ -5,7 +5,6 @@ import net.mamoe.mirai.console.command.CommandSender;
 import net.mamoe.mirai.console.command.JCommandManager;
 import net.mamoe.mirai.console.plugins.Config;
 import net.mamoe.mirai.console.plugins.PluginBase;
-import net.mamoe.mirai.event.events.MemberJoinEvent;
 import net.mamoe.mirai.message.GroupMessageEvent;
 import org.jetbrains.annotations.NotNull;
 
@@ -13,12 +12,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class VMain extends PluginBase {
-    private static VMain plugin;
+public class Main extends PluginBase {
+    private static Main plugin;
     public static Config config;
     public static Config verification;
     public static List<String> vlist = new ArrayList<>();
-    public static VMain getPlugin() {
+    public static Main getPlugin() {
         return plugin;
     }
     public static void removeverMember(long memberid,long groupid) {
@@ -81,8 +80,8 @@ public class VMain extends PluginBase {
         loadConfigFiles();
 
         getLogger().info("Plugin enabled!");
-        this.getEventListener().subscribeAlways(MemberJoinEvent.class,new VMemberJoinEvent());
-        this.getEventListener().subscribeAlways(GroupMessageEvent.class,new VMessageListener());
-        this.getEventListener().subscribeAlways(MemberJoinEvent.class,new VMemberJoinEvent());
+        this.getEventListener().subscribeAlways(net.mamoe.mirai.event.events.MemberJoinEvent.class,new MemberJoinEvent());
+        this.getEventListener().subscribeAlways(GroupMessageEvent.class,new MessageListener());
+        this.getEventListener().subscribeAlways(net.mamoe.mirai.event.events.MemberJoinEvent.class,new MemberJoinEvent());
     }
 }          

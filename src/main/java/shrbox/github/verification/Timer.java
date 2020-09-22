@@ -6,9 +6,9 @@ import net.mamoe.mirai.message.data.MessageUtils;
 
 import java.util.TimerTask;
 
-public class VTimer extends TimerTask {
+public class Timer extends TimerTask {
     MemberJoinEvent memberJoinEvent;
-    public VTimer(MemberJoinEvent event) {
+    public Timer(MemberJoinEvent event) {
         memberJoinEvent = event;
     }
 
@@ -16,10 +16,10 @@ public class VTimer extends TimerTask {
     public void run() {
         long memberid = memberJoinEvent.getMember().getId();
         long groupid = memberJoinEvent.getGroup().getId();
-        if(VMain.checkverMember(memberid,groupid)) {
+        if(Main.checkverMember(memberid,groupid)) {
             memberJoinEvent.getGroup().sendMessage(MessageUtils.newChain(new At(memberJoinEvent.getMember()))
                     .plus("未能通过加群验证，他离开了我们"));
-            VMain.removeverMember(memberid,groupid);
+            Main.removeverMember(memberid,groupid);
             memberJoinEvent.getMember().kick();
         }
         this.cancel();

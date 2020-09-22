@@ -6,20 +6,20 @@ import net.mamoe.mirai.message.data.MessageUtils;
 
 import java.util.function.Consumer;
 
-public class VMessageListener implements Consumer <GroupMessageEvent> {
+public class MessageListener implements Consumer <GroupMessageEvent> {
     @Override
     public void accept(GroupMessageEvent event) {
-        if(event.getGroup().getBotPermission().getLevel()==0||!VMain.config.getLongList("enable_group").contains(event.getGroup().getId())) {
+        if(event.getGroup().getBotPermission().getLevel()==0||!Main.config.getLongList("enable_group").contains(event.getGroup().getId())) {
             return;//如果机器人权限不足或该群不在开启的群列表内
         }
         //event.getGroup().sendMessage("JoinEvent权限足够");
         long memberid = event.getSender().getId();//获取QQ号
         long groupid = event.getGroup().getId();
-        if(VMain.checkverMember(memberid,groupid)) {
-            int vercode = VMain.getVerification(memberid,groupid);//获取对应验证码
+        if(Main.checkverMember(memberid,groupid)) {
+            int vercode = Main.getVerification(memberid,groupid);//获取对应验证码
 
             if(event.getMessage().contentToString().equals(String.valueOf(vercode))) {
-                VMain.removeverMember(memberid,groupid);
+                Main.removeverMember(memberid,groupid);
                 event.getGroup().sendMessage(MessageUtils.newChain("恭喜你！")
                         .plus(new At(event.getSender()))
                         .plus("\n你已经通过了加群验证！"));

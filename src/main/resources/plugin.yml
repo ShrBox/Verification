@@ -1,6 +1,6 @@
 name: "Verification"
 author: "ShrBox"
 version: "0.1.1"
-main: "shrbox.github.verification.VMain"
+main: "shrbox.github.verification.Main"
 info: "入群验证插件"
 depends: []
