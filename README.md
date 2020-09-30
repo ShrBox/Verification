@@ -1,8 +1,7 @@
 # Verification
 
 ![Java CI with Gradle](https://github.com/ShrBox/Verification/workflows/Java%20CI%20with%20Gradle/badge.svg)  
-简单的QQ加群验证插件 for mirai  
-Release中有编译好的.jar
+简单的QQ加群验证插件
 
 # Download
 
